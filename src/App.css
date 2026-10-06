@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f5;
+  color: #18181b;
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+/* Header */
+.header h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.header p {
+  margin: 0;
+  color: #52525b;
+}
+
+/* Filters — Flexbox: колонка на телефоне, ряд на планшете/десктопе */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-field label {
+  font-size: 0.85rem;
+  color: #52525b;
+}
+
+.filter-field input,
+.filter-field select {
+  padding: 8px 12px;
+  border: 1px solid #d4d4d8;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  min-width: 220px;
+}
+
+.divider {
+  height: 1px;
+  background: #e4e4e7;
+  margin-top: 24px;
+}
+
+.empty-state {
+  margin-top: 32px;
+  color: #71717a;
+}
+
+/* Character grid — CSS Grid: 1 колонка на телефоне, больше на широких экранах */
+.character-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.character-card {
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.character-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.character-card__body {
+  padding: 16px;
+}
+
+.character-card__body h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.character-card__body p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #3f3f46;
+}
+
+/* Tablet: фильтры в ряд, сетка карточек — 2 колонки */
+@media (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: фиксированная центрированная колонка 688px, как в Figma
+   (left: 376px, width: 688px в кадре 1440px = равные отступы по бокам) */
+@media (min-width: 1200px) {
+  .page {
+    max-width: 688px;
+    padding-top: 64px;
+  }
+
+  .header h1 {
+    font-size: 64px;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
